@@ -1,0 +1,63 @@
+.selButton, .selButton-active, .inputArea {
+    display: inline-block;
+    width: 40px;
+    padding: 12px 0;
+    text-align: center;
+    user-select: none;
+    border-radius: 3px;
+    border: 1px solid lightgray;
+    margin: 5px;
+}
+
+.selButton:hover {
+    background-color: lightgrey;
+}
+
+.selButton-active:hover {
+    background-color: rgb(118, 236, 118);;
+}
+
+.selButton {
+    color: black;
+}
+
+.selButton-active {
+    background-color: lightgreen;
+    color: white;
+}
+
+.submitButton {
+    width: 100px;
+    padding: 12px 0;
+    text-align: center;
+    user-select: none;
+    border-radius: 3px;
+    border: 1px solid lightgray;
+    margin: 5px;
+    background-color: lightgreen;
+}
+
+.submitButton:hover {
+    background-color: rgb(118, 236, 118);
+}
+
+.submitButton:active {
+    background-color: green;
+    color: white;
+}
+
+.generated {
+    width: 50%;
+    float: left;
+}
+
+.selected {
+    width: 50%;
+    float: left;
+    clear: left;
+}
+
+.weighs {
+    float: left;
+    width: 50%;
+}

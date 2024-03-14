@@ -1,24 +1,47 @@
-import './Selected.css';
+import generateCompactRow from './functions/generateCompactRow';
+import SelectButton from './selectButton';
+import SubmitButton from './submitButton';
 
-function Selected() {
+function Selected({ setCompRow, selection, setSelection }) {
 
+    const select = (elem) => {
+
+        const parentKey = elem.currentTarget.getAttribute("data-key");
+        const elemId = elem.currentTarget.getAttribute("data-id");
+
+        if (elem.target.className === "selButton") {
+            elem.target.className = "selButton-active";
+
+            usedValues[parentKey][elemId] = 1;
+        } else {
+            elem.target.className = "selButton";
+
+            usedValues[parentKey][elemId] = 0;
+        }
+
+    }
+
+    let usedValues;
+
+    if (usedValues == null) {   
+        usedValues = selection;
+    }
+
+    function generateCompact() {
+        generateCompactRow(usedValues, setSelection, setCompRow);
+    }
 
     return (
         <div className='selected'>
             <h3>selected</h3>
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-            <div>5</div>
-            <div>6</div>
-            <div>7</div>
-            <div>8</div>
-            <div>9</div>
-            <div>10</div>
-            <div>11</div>
-            <div>12</div>
-            <div>13</div>
+            {usedValues.map((val, i) => (
+                <div key={i}>
+                    <SelectButton val={1} reFunc={select} className={val[0] === 1 ? "selButton-active" : "selButton"} id={0} parentKey={i} />
+                    <SelectButton val={"x"} reFunc={select} className={val[1] === 1 ? "selButton-active" : "selButton"} id={1} parentKey={i} />
+                    <SelectButton val={2} reFunc={select} className={val[2] === 1 ? "selButton-active" : "selButton"} id={2} parentKey={i} />
+                </div>
+            ))}
+            <SubmitButton text={"generoi"} reFunc={generateCompact} />
         </div>
     )
 }
