@@ -8,6 +8,7 @@ function generateRows( compRow, setRows, rowAmount ) {
         return;
     }
 
+    /*
     // exapmle row: 1x2lrca111111
     let def = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
@@ -74,6 +75,134 @@ function generateRows( compRow, setRows, rowAmount ) {
         }
     }
 
+    setRows(rows);
+    */
+
+
+    // generating rows
+
+    // exapmle row: 1x2lrca111111
+    // 1 = 1, x = x, 2 = 2, l = [1, x], r = [x, 2], c = [1, 2], a = [1, x, 2];
+
+    // current row (encoding = 1 -> 1, 2 -> x, 3 -> 2)
+    let def = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+    // next index to change
+    let changeIndex = 12;
+
+    // next index for new change
+    let nextIndex = 12;
+
+    // get default values form nonchanging indexes
+    for (let i = 0; i < compRow.length; i++) {
+        switch(compRow[i]) {
+            case "1":
+                def[i] = 1;
+                break;
+            case "x":
+                def[i] = "x";
+                break;
+            case "2":
+                def[i] = 2;
+                break;
+            case "l":
+                def[i] = 1;
+                break;
+            case "r":
+                def[i] = "x";
+                break;
+            case "c":
+                def[i] = 1;
+                break;
+            case "a":
+                def[i] = 1;
+                break;
+            default:
+                break;
+        }
+    }
+
+    rows.push(def.join);
+        
+    // loop all possibilities
+    for (let i = 0; i < rowAmount; i++) {
+
+        switch(compRow[changeIndex]) {
+            case "1":
+                break;
+            case "x":
+                break;
+            case "2":
+                break;
+            case "l":
+                switch(def[changeIndex]) {
+                    case 1:
+                        def[changeIndex] = "x";
+                        break;
+                    case "x":
+                        def[changeIndex] = 1;
+                        nextIndex--;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case "r":
+                switch(def[changeIndex]) {
+                    case "x":
+                        def[changeIndex] = 2;
+                        break;
+                    case 2:
+                        def[changeIndex] = "x";
+                        nextIndex--;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case "c":
+                switch(def[changeIndex]) {
+                    case 1:
+                        def[changeIndex] = 2;
+                        break;
+                    case 2:
+                        def[changeIndex] = 1;
+                        nextIndex--;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case "a":
+                switch(def[changeIndex]) {
+                    case 1:
+                        def[changeIndex] = "x";
+                        break;
+                    case "x":
+                        def[changeIndex] = 2;
+                        break;
+                    case 2:
+                        def[changeIndex] = 1;
+                        nextIndex--;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            default:
+                break;
+        }
+
+        if (nextIndex === changeIndex) {
+            changeIndex = 12;
+        } else {
+            changeIndex--;
+        }
+
+        //rows.push(def.join(''));
+        console.log(def.join(''));
+    }
+    
     setRows(rows);
 }
 
