@@ -13,7 +13,9 @@ function Generated({ compRow, rowAmount, rows }) {
                 <div className="generatedRows">
                     <div>generated rows:</div>
                     {rows.map((data, i) => (
-                        <div key={i}>{data}</div>
+                        <div key={i} className="row">
+                            <div>{`${i+1} - > ` + data}</div>
+                        </div>
                     ))}
                 </div>
             </div>

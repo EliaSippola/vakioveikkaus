@@ -1,7 +1,7 @@
-function InputArea({ val }) {
+function InputArea({ val, reFunc, keyId }) {
 
     return (
-        <div className="inputArea">{val}</div>
+        <input type="number" className="inputArea" defaultValue={val} onChange={reFunc} data-key={keyId} data-val={val} ></input>
     )
 }
 

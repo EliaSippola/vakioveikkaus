@@ -90,8 +90,8 @@ function generateRows( compRow, setRows, rowAmount ) {
     // next index to change
     let changeIndex = 12;
 
-    // next index for new change
-    let nextIndex = 12;
+    // bool for continuing
+    let cont = true;
 
     // get default values form nonchanging indexes
     for (let i = 0; i < compRow.length; i++) {
@@ -99,22 +99,22 @@ function generateRows( compRow, setRows, rowAmount ) {
             case "1":
                 def[i] = 1;
                 break;
-            case "x":
-                def[i] = "x";
+            case "X":
+                def[i] = "X";
                 break;
             case "2":
                 def[i] = 2;
                 break;
-            case "l":
+            case "L":
                 def[i] = 1;
                 break;
-            case "r":
-                def[i] = "x";
+            case "R":
+                def[i] = "X";
                 break;
-            case "c":
+            case "C":
                 def[i] = 1;
                 break;
-            case "a":
+            case "A":
                 def[i] = 1;
                 break;
             default:
@@ -122,85 +122,87 @@ function generateRows( compRow, setRows, rowAmount ) {
         }
     }
 
-    rows.push(def.join);
+    rows.push(def.join(''));
         
     // loop all possibilities
-    for (let i = 0; i < rowAmount; i++) {
+    for (let i = 0; i < rowAmount - 1; i++) {
 
-        switch(compRow[changeIndex]) {
-            case "1":
-                break;
-            case "x":
-                break;
-            case "2":
-                break;
-            case "l":
-                switch(def[changeIndex]) {
-                    case 1:
-                        def[changeIndex] = "x";
-                        break;
-                    case "x":
-                        def[changeIndex] = 1;
-                        nextIndex--;
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            case "r":
-                switch(def[changeIndex]) {
-                    case "x":
-                        def[changeIndex] = 2;
-                        break;
-                    case 2:
-                        def[changeIndex] = "x";
-                        nextIndex--;
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            case "c":
-                switch(def[changeIndex]) {
-                    case 1:
-                        def[changeIndex] = 2;
-                        break;
-                    case 2:
-                        def[changeIndex] = 1;
-                        nextIndex--;
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            case "a":
-                switch(def[changeIndex]) {
-                    case 1:
-                        def[changeIndex] = "x";
-                        break;
-                    case "x":
-                        def[changeIndex] = 2;
-                        break;
-                    case 2:
-                        def[changeIndex] = 1;
-                        nextIndex--;
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            default:
-                break;
-        }
+        while (cont) {
+            switch(compRow[changeIndex]) {
+                case "1":
+                    break;
+                case "X":
+                    break;
+                case "2":
+                    break;
+                case "L":
+                    switch(def[changeIndex]) {
+                        case 1:
+                            def[changeIndex] = "X";
+                            cont = false;
+                            break;
+                        case "X":
+                            def[changeIndex] = 1;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case "R":
+                    switch(def[changeIndex]) {
+                        case "X":
+                            def[changeIndex] = 2;
+                            cont = false;
+                            break;
+                        case 2:
+                            def[changeIndex] = "X";
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case "C":
+                    switch(def[changeIndex]) {
+                        case 1:
+                            def[changeIndex] = 2;
+                            cont = false;
+                            break;
+                        case 2:
+                            def[changeIndex] = 1;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case "A":
+                    switch(def[changeIndex]) {
+                        case 1:
+                            def[changeIndex] = "X";
+                            cont = false;
+                            break;
+                        case "X":
+                            def[changeIndex] = 2;
+                            cont = false;
+                            break;
+                        case 2:
+                            def[changeIndex] = 1;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            }
 
-        if (nextIndex === changeIndex) {
-            changeIndex = 12;
-        } else {
             changeIndex--;
         }
 
-        //rows.push(def.join(''));
-        console.log(def.join(''));
+        changeIndex = 12;
+
+        cont = true;
+
+        rows.push(def.join(''));
     }
     
     setRows(rows);

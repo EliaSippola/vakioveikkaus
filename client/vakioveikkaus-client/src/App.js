@@ -22,13 +22,30 @@ function App() {
     [1,0,0],
     [1,0,0],
     [1,0,0]
-]
+  ]
+
+  const defaultWeighs = [
+    [33, 33, 33],
+    [33, 33, 33],
+    [33, 33, 33],
+    [33, 33, 33],
+    [33, 33, 33],
+    [33, 33, 33],
+    [33, 33, 33],
+    [33, 33, 33],
+    [33, 33, 33],
+    [33, 33, 33],
+    [33, 33, 33],
+    [33, 33, 33],
+    [33, 33, 33]
+  ]
 
   const [compRow, setCompRow] = useState("0000000000000");
   const [selection, setSelection] = useState(defaultSelection);
   const [rows, setRows] = useState(null);
   const [rowAmount, setRowAmount] = useState(1);
   const [update, forceUpdate] = useState(0);
+  const [weighs, setWeighs] = useState(defaultWeighs);
 
   useEffect(() => {
     countRows(compRow, setRowAmount);
@@ -43,9 +60,9 @@ function App() {
   return (
     <div className="App">
       <p>Vakioveikkaus rivien generointi</p>
-      <Weighs />
-      <Generated compRow={compRow} rowAmount={rowAmount} rows={rows} />
       <Selected setCompRow={setCompRow} selection={selection} setSelection={setSelection} />
+      <Weighs weighs={weighs} setWeighs={setWeighs} />
+      <Generated compRow={compRow} rowAmount={rowAmount} rows={rows} />
     </div>
   );
 }

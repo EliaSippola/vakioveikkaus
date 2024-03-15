@@ -13,23 +13,22 @@
         } else if (usedValues[i][0] === 1 && usedValues[i][1] === 0 && usedValues[i][2] === 0) {
             compRow[i] = "1";
         } else if (usedValues[i][0] === 0 && usedValues[i][1] === 1 && usedValues[i][2] === 0) {
-            compRow[i] = "x";
+            compRow[i] = "X";
         } else if (usedValues[i][0] === 0 && usedValues[i][1] === 0 && usedValues[i][2] === 1) {
             compRow[i] = "2";
         } else if (usedValues[i][0] === 1 && usedValues[i][1] === 1 && usedValues[i][2] === 0) {
-            compRow[i] = "l";
+            compRow[i] = "L";
         } else if (usedValues[i][0] === 0 && usedValues[i][1] === 1 && usedValues[i][2] === 1) {
-            compRow[i] = "r";
+            compRow[i] = "R";
         } else if (usedValues[i][0] === 1 && usedValues[i][1] === 0 && usedValues[i][2] === 1) {
-            compRow[i] = "c";
+            compRow[i] = "C";
         } else if (usedValues[i][0] === 1 && usedValues[i][1] === 1 && usedValues[i][2] === 1) {
-            compRow[i] = "a";
+            compRow[i] = "A";
         }
     }
 
     compRow = compRow.join('');
 
-    console.log(compRow);
     setCompRow(compRow);
 }
 
