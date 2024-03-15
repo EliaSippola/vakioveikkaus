@@ -1,4 +1,9 @@
-function generateRows( compRow, setRows, rowAmount ) {
+import countRows from "./countRows";
+
+function generateRows( compRow, setRows, setRowAmount ) {
+
+    let rowAmount = countRows(compRow, setRowAmount);
+
     let rows = [];
 
     // check if there is empty rows

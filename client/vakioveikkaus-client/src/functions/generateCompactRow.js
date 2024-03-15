@@ -1,5 +1,5 @@
  // generate compact row of all possibilities
- function generateCompactRow(usedValues, setSelection, setCompRow) {
+ function generateCompactRow(usedValues, setSelection, setCompRow, forceUpdate) {
 
     setSelection(usedValues);
 
@@ -30,6 +30,7 @@
     compRow = compRow.join('');
 
     setCompRow(compRow);
+    forceUpdate(1);
 }
 
 export default generateCompactRow;

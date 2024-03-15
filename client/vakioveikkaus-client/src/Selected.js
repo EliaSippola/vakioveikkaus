@@ -2,7 +2,7 @@ import generateCompactRow from './functions/generateCompactRow';
 import SelectButton from './selectButton';
 import SubmitButton from './submitButton';
 
-function Selected({ setCompRow, selection, setSelection }) {
+function Selected({ setCompRow, selection, setSelection, forceUpdate }) {
 
     const select = (elem) => {
 
@@ -28,7 +28,7 @@ function Selected({ setCompRow, selection, setSelection }) {
     }
 
     function generateCompact() {
-        generateCompactRow(usedValues, setSelection, setCompRow);
+        generateCompactRow(usedValues, setSelection, setCompRow, forceUpdate);
     }
 
     return (
@@ -41,7 +41,7 @@ function Selected({ setCompRow, selection, setSelection }) {
                     <SelectButton val={2} reFunc={select} className={val[2] === 1 ? "selButton-active" : "selButton"} id={2} parentKey={i} />
                 </div>
             ))}
-            <SubmitButton text={"generoi"} reFunc={generateCompact} />
+            <SubmitButton text={"Generate"} reFunc={generateCompact} />
         </div>
     )
 }

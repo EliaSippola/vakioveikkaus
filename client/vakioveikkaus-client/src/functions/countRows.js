@@ -1,4 +1,4 @@
-function countRows(compactRow, setRowAmount, update, forceUpdate) {
+function countRows(compactRow, setRowAmount) {
     let amount = 1;
 
     for (let i = 0; i < compactRow.length; i++) {
@@ -10,6 +10,8 @@ function countRows(compactRow, setRowAmount, update, forceUpdate) {
     }
 
     setRowAmount(amount);
+
+    return amount;
 }
 
 export default countRows;

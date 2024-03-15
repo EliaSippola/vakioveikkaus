@@ -47,19 +47,9 @@
     color: white;
 }
 
-.generated {
-    width: 50%;
+.generated, .weighs, .selected {
+    width: 20%;
     float: left;
-}
-
-.selected {
-    width: 25%;
-    float: left;
-}
-
-.weighs {
-    float: left;
-    width: 25%;
 }
 
 .row {
