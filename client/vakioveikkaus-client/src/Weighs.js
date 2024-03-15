@@ -15,7 +15,7 @@ function Weighs({ weighs, setWeighs }) {
     }
 
     function setAmount() {
-
+        
     }
 
     let usedWeighs;
