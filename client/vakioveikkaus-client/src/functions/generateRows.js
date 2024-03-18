@@ -4,7 +4,7 @@ function generateRows( compRow, setRows, setRowAmount ) {
 
     let rowAmount = countRows(compRow, setRowAmount);
 
-    let rows = [];
+    let rows = new Array(rowAmount);
 
     // check if there is empty rows
     if (compRow.includes("0")) {
@@ -95,9 +95,6 @@ function generateRows( compRow, setRows, setRowAmount ) {
     // next index to change
     let changeIndex = 12;
 
-    // bool for continuing
-    let cont = true;
-
     // get default values form nonchanging indexes
     for (let i = 0; i < compRow.length; i++) {
         switch(compRow[i]) {
@@ -127,12 +124,15 @@ function generateRows( compRow, setRows, setRowAmount ) {
         }
     }
 
-    rows.push(def.join(''));
+    rows[0] = def.join('');
         
     // loop all possibilities
-    for (let i = 0; i < rowAmount - 1; i++) {
+    for (let i = 1; i < rowAmount; i++) {
 
-        while (cont) {
+        let j = 12;
+
+        whileLoop:
+        while (j--) {
             switch(compRow[changeIndex]) {
                 case "1":
                     break;
@@ -144,8 +144,7 @@ function generateRows( compRow, setRows, setRowAmount ) {
                     switch(def[changeIndex]) {
                         case 1:
                             def[changeIndex] = "X";
-                            cont = false;
-                            break;
+                            break whileLoop;
                         case "X":
                             def[changeIndex] = 1;
                             break;
@@ -157,8 +156,7 @@ function generateRows( compRow, setRows, setRowAmount ) {
                     switch(def[changeIndex]) {
                         case "X":
                             def[changeIndex] = 2;
-                            cont = false;
-                            break;
+                            break whileLoop;
                         case 2:
                             def[changeIndex] = "X";
                             break;
@@ -170,8 +168,7 @@ function generateRows( compRow, setRows, setRowAmount ) {
                     switch(def[changeIndex]) {
                         case 1:
                             def[changeIndex] = 2;
-                            cont = false;
-                            break;
+                            break whileLoop;
                         case 2:
                             def[changeIndex] = 1;
                             break;
@@ -183,12 +180,10 @@ function generateRows( compRow, setRows, setRowAmount ) {
                     switch(def[changeIndex]) {
                         case 1:
                             def[changeIndex] = "X";
-                            cont = false;
-                            break;
+                            break whileLoop;
                         case "X":
                             def[changeIndex] = 2;
-                            cont = false;
-                            break;
+                            break whileLoop;
                         case 2:
                             def[changeIndex] = 1;
                             break;
@@ -205,9 +200,7 @@ function generateRows( compRow, setRows, setRowAmount ) {
 
         changeIndex = 12;
 
-        cont = true;
-
-        rows.push(def.join(''));
+        rows[i] = def.join('');
     }
     
     setRows(rows);

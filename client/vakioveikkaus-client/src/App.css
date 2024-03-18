@@ -47,13 +47,27 @@
     color: white;
 }
 
-.generated, .weighs, .selected {
-    width: 20%;
+.generated, .weighs, .selected, .filtered, .filterSelected {
+    width: 19%;
     float: left;
+    margin-left: 5px;
+}
+
+.generated, .weighs, .selected, .filtered {
+    border-right: 1px solid gray;
 }
 
 .row {
     font-family: 'Courier New', Courier, monospace;
+}
+
+.filteredList, .generatedList {
+    max-height: 730px;
+    overflow-y: scroll;
+    padding: 5px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin: 2px;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -67,4 +81,5 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     appearance: textfield;
     -moz-appearance: textfield;
+    height: 18.67px;
 }

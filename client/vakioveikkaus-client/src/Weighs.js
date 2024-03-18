@@ -35,8 +35,9 @@ function Weighs({ weighs, setWeighs, filterAmount, setFilterAmount, forceUpdate 
                     <InputArea val={val[2]} reFunc={changeVal} keyId={i} valId={2} />
                 </div>
             ))}
-            <input type="number" className='setAmount' onChange={setAmount} value={filterAmount} ></input>
+            <input type="number" className='setAmount' onChange={setAmount} value={filterAmount} name="lines" ></input>
             <SubmitButton text={"Filter"} reFunc={filterRows} />
+            <div>Rivien määrä Filterin vieressä</div>
         </div>
     )
 }

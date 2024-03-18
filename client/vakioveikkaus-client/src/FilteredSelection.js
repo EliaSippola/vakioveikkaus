@@ -18,7 +18,7 @@ function FilteredSelection({ selection, forceUpdate, filterAmount, setFilterAmou
     }
 
     return (
-        <div className='selected'>
+        <div className='filterSelected'>
             <h3>filtered Selection</h3>
             {usedValues.map((val, i) => (
                 <div key={i}>
@@ -26,9 +26,10 @@ function FilteredSelection({ selection, forceUpdate, filterAmount, setFilterAmou
                     <SelectButton val={"x"} className={val[1] === 1 ? "selButton-active" : "selButton"} id={1} parentKey={i} />
                     <SelectButton val={2} className={val[2] === 1 ? "selButton-active" : "selButton"} id={2} parentKey={i} />
                 </div>
-            ))}
-            <input type="number" className='setAmount' onChange={setAmount} value={filterAmount} min={1} ></input>
+                ))}
+            <input type="number" className='setAmount' onChange={setAmount} value={filterAmount} min={1} name="lines" ></input>
             <SubmitButton text={"Select"} reFunc={filterToSelection} />
+            <div>Rivien määrä Selectin vieressä. Huomaa, että rivimäärän tulee olla kahdella ja/tai kolmella jaollinen</div>
         </div>
     )
 }
