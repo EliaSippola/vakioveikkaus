@@ -9,7 +9,7 @@
     margin: 5px;
 }
 
-.selButton:hover {
+.selButton:hover, input[type=number]:hover {
     background-color: lightgrey;
 }
 

@@ -76,8 +76,8 @@ function App() {
     <div className="App">
       <p>Vakioveikkaus rivien generointi ja filtterointi</p>
       <Selected setCompRow={setCompRow} selection={selection} setSelection={setSelection} forceUpdate={forceUpdate} />
-      <Weighs weighs={weighs} setWeighs={setWeighs} filterAmount={filterAmount} setFilterAmount={setFilterAmount} forceUpdate={forceUpdate} />
       <Generated compRow={compRow} rowAmount={rowAmount} rows={rows} />
+      <Weighs weighs={weighs} setWeighs={setWeighs} filterAmount={filterAmount} setFilterAmount={setFilterAmount} forceUpdate={forceUpdate} />
       <Filtered rowAmount={filterAmount} rows={filteredRows} />
       <FilteredSelection selection={filteredSelection} forceUpdate={forceUpdate} filterAmount={filteredSelectionRowAmount} setFilterAmount={setFilteredSelectionRowAmount} />
     </div>
