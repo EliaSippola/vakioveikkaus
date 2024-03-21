@@ -8,6 +8,9 @@ import filterRows from './functions/filterRows';
 import Filtered from './Filtered';
 import FilteredSelection from './FilteredSelection';
 import filterSelection from './functions/filterSelection';
+import CreateSave from './createSave';
+import updateSelectionList from './functions/updateSelectionList';
+import SelectSave from './selectSave';
 
 function App() {
 
@@ -16,7 +19,7 @@ function App() {
     [1,0,0],
     [1,0,0],
     [1,0,0],
-    [1,0,0],
+    [1,1,0],
     [1,0,0],
     [1,0,0],
     [1,0,0],
@@ -47,12 +50,13 @@ function App() {
   const [selection, setSelection] = useState(defaultSelection);
   const [rows, setRows] = useState(null);
   const [rowAmount, setRowAmount] = useState(1);
-  const [update, forceUpdate] = useState(0);
+  const [update, forceUpdate] = useState(4);
   const [weighs, setWeighs] = useState(defaultWeighs);
   const [filterAmount, setFilterAmount] = useState(128);
   const [filteredRows, setFilteredRows] = useState(null);
   const [filteredSelection, setFilteredSelection] = useState(defaultSelection);
   const [filteredSelectionRowAmount, setFilteredSelectionRowAmount] = useState(128);
+  const [selectionList, setSelectionList] = useState([]);
 
   useEffect(() => {
   }, [update])
@@ -72,14 +76,23 @@ function App() {
     forceUpdate(0);
   }
 
+  if (update === 4) {
+    updateSelectionList(setSelectionList);
+    forceUpdate(0);
+  }
+
   return (
     <div className="App">
       <p>Vakioveikkaus rivien generointi ja filtterointi</p>
-      <Selected setCompRow={setCompRow} selection={selection} setSelection={setSelection} forceUpdate={forceUpdate} />
-      <Generated compRow={compRow} rowAmount={rowAmount} rows={rows} />
-      <Weighs weighs={weighs} setWeighs={setWeighs} filterAmount={filterAmount} setFilterAmount={setFilterAmount} forceUpdate={forceUpdate} />
-      <Filtered rowAmount={filterAmount} rows={filteredRows} />
-      <FilteredSelection selection={filteredSelection} forceUpdate={forceUpdate} filterAmount={filteredSelectionRowAmount} setFilterAmount={setFilteredSelectionRowAmount} />
+      <SelectSave selectionList={selectionList} forceUpdate={forceUpdate} />
+      <div className='columns'>
+        <Selected setCompRow={setCompRow} selection={selection} setSelection={setSelection} forceUpdate={forceUpdate} />
+        <Generated compRow={compRow} rowAmount={rowAmount} rows={rows} />
+        <Weighs weighs={weighs} setWeighs={setWeighs} filterAmount={filterAmount} setFilterAmount={setFilterAmount} forceUpdate={forceUpdate} />
+        <Filtered rowAmount={filterAmount} rows={filteredRows} />
+        <FilteredSelection selection={filteredSelection} forceUpdate={forceUpdate} filterAmount={filteredSelectionRowAmount} setFilterAmount={setFilteredSelectionRowAmount} />
+      </div>
+      <CreateSave selection={selection} weighs={weighs} forceUpdate={forceUpdate} />
     </div>
   );
 }

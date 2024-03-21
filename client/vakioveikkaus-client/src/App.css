@@ -26,7 +26,7 @@
     color: white;
 }
 
-.submitButton {
+.submitButton, .createSave, .deleteSel, .selectSel {
     display: inline-block;
     width: 92px;
     padding: 12px 0;
@@ -38,11 +38,11 @@
     background-color: lightgreen;
 }
 
-.submitButton:hover {
+.submitButton:hover, .createSave:hover, .deleteSel:hover, .selectSel:hover {
     background-color: rgb(118, 236, 118);
 }
 
-.submitButton:active {
+.submitButton:active, .createSave:active, .deleteSel:active, .selectSel:active {
     background-color: green;
     color: white;
 }
@@ -51,6 +51,10 @@
     width: 19%;
     float: left;
     margin-left: 5px;
+}
+
+.filterSelected {
+    display: block;
 }
 
 .generated, .weighs, .selected, .filtered {
@@ -68,6 +72,35 @@
     border: 1px solid gray;
     border-radius: 10px;
     margin: 2px;
+}
+
+.save {
+    float: left;
+}
+
+.createSave {
+    width: fit-content;
+    padding: 12px;
+}
+
+.saveInput {
+    padding: 12px;
+}
+
+.selection {
+    padding: 12px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.deleteSel {
+    margin-left: 10px;
+}
+
+.columns {
+    border: 1px solid gray;
+    background-color: rgb(181, 181, 181);
+    border-radius: 10px;
 }
 
 /* Chrome, Safari, Edge, Opera */

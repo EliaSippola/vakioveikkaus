@@ -1,9 +1,11 @@
 const exp = require('express');
 const router = exp.Router();
-//const dbController = require('controllers/db_controller.js');
+const dbController = require('../controllers/db_controller');
 
-router.get('/', (req, res) => {
-    res.send("Hello world!");
-});
+router.get('/', dbController.getAllSaves);
+
+router.post('/', dbController.createSave);
+
+router.delete('/', dbController.deleteOne);
 
 module.exports = router;
