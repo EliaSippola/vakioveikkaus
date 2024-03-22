@@ -11,6 +11,7 @@ import filterSelection from './functions/filterSelection';
 import CreateSave from './createSave';
 import updateSelectionList from './functions/updateSelectionList';
 import SelectSave from './selectSave';
+import { getOneSave } from './api/saves';
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
     [1,0,0],
     [1,0,0],
     [1,0,0],
-    [1,1,0],
+    [1,0,0],
     [1,0,0],
     [1,0,0],
     [1,0,0],
@@ -57,9 +58,14 @@ function App() {
   const [filteredSelection, setFilteredSelection] = useState(defaultSelection);
   const [filteredSelectionRowAmount, setFilteredSelectionRowAmount] = useState(128);
   const [selectionList, setSelectionList] = useState([]);
+  const [listId, setListId] = useState(0);
 
   useEffect(() => {
-  }, [update])
+  }, [update]);
+
+  useEffect(() => {
+    setListId(selectionList[0]?._id);
+  }, [selectionList]);
 
   if (update === 1) {
     generateRows(compRow, setRows, setRowAmount);
@@ -81,10 +87,22 @@ function App() {
     forceUpdate(0);
   }
 
+  if (update === 5) {
+    const get = async () => {
+      const res =  await getOneSave(listId);
+
+      setSelection(res.selection);
+      setWeighs(res.weighs);
+    }
+
+    get();
+    forceUpdate(0);
+  }
+
   return (
     <div className="App">
       <p>Vakioveikkaus rivien generointi ja filtterointi</p>
-      <SelectSave selectionList={selectionList} forceUpdate={forceUpdate} />
+      <SelectSave selectionList={selectionList} forceUpdate={forceUpdate} listId={listId} setListId={setListId} />
       <div className='columns'>
         <Selected setCompRow={setCompRow} selection={selection} setSelection={setSelection} forceUpdate={forceUpdate} />
         <Generated compRow={compRow} rowAmount={rowAmount} rows={rows} />

@@ -1,28 +1,29 @@
-import React, { useState } from "react";
 import { deleteOne } from "./api/saves";
 
-function SelectSave({ selectionList, forceUpdate }) {
-
-    const [id, setId] = useState(null);
+function SelectSave({ selectionList, forceUpdate, listId, setListId }) {
 
     const handleDelete = async () => {
-        await deleteOne(id);
+        await deleteOne(listId);
         forceUpdate(4);
     }
 
     function handleChange(e) {
-        setId(e.target.value);
+        setListId(e.target.value);
+    }
+
+    function handleSelect(e) {
+        forceUpdate(5);
     }
 
     return (
         <div className="selectSave">
-            <select className="selection" defaultValue={id} onChange={handleChange}>
+            <select className="selection" value={listId} onChange={handleChange}>
                 {selectionList.map((val, i) => (
                     <option key={i} value={val._id}>{val.title}</option>
                 ))}
             </select>
             <div className="deleteSel" onClick={handleDelete}>Delete</div>
-            <div className="selectSel">Select</div>
+            <div className="selectSel" onClick={handleSelect}>Select</div>
         </div>
     )
 }

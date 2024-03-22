@@ -1,50 +1,90 @@
 const Data = require('../models/data');
 const Save = require('../models/saves');
+const dotenv = require('dotenv');
 
-// create save
-exports.createSave = async (req, res) => {
-    try {
+dotenv.config();
 
-        if (req.body.title === null || req.body.selection === null || req.body.weighs === null) {
-            res.status(400).end('Not all required fields set');
+// create save, and get all titles, and one save
+exports.getOrPost = async (req, res) => {
+
+    // check for api key in body
+    if (req.body.api_key !== process.env.API_KEY) {
+        res.status(401).end();
+        return;
+    }
+    
+    // post request
+    if (req.body.type === 0) {
+        try {
+
+            if (req.body.title === null || req.body.selection === null || req.body.weighs === null) {
+                res.status(400).end('Not all required fields set');
+            }
+
+            let save = new Save();
+
+            save.title = req.body.title;
+
+            await Save.insertMany(save);
+
+            let data = new Data();
+
+            data.saveId = save._id;
+            data.selection = req.body.selection;
+            data.weighs = req.body.weighs;
+
+            await Data.insertMany(data);
+
+            res.status(200).end();
+        } catch (e) {
+            res.status(500).send('Server error');
+            console.log(e);
         }
 
-        let save = new Save();
+    // get request (needs body)
+    } else if (req.body.type === 1) {
+        try {
+            const save = await Save.find();
+            res.json(save);
+    
+            res.status(200).end();
+        } catch (e) {
+            res.status(500).send('Server error');
+            console.log(e);
+        }
 
-        save.title = req.body.title;
+    // get save details
+    } else if (req.body.type === 2) {
 
-        await Save.insertMany(save);
+        if (req.body.id === null || req.body.id === 0) {
+            res.send(400).end();
+            return;
+        }
 
-        let data = new Data();
+        try {
 
-        data.saveId = save._id;
-        data.selection = req.body.selection;
-        data.weighs = req.body.weighs;
+            const data = await Data.findOne({ saveId: req.body.id });
+            res.json(data);
 
-        await Data.insertMany(data);
-
-        res.status(200).end();
-    } catch (e) {
-        res.status(500).send('Server error');
-        console.log(e);
+            res.status(200).end();
+        } catch (e) {
+            res.status(500).send('Server error').end();
+            console.log(e);
+        }
+    } else {
+        res.status(404).end();
     }
-}
 
-// get all titles
-exports.getAllSaves = async (req, res) => {
-    try {
-        const save = await Save.find();
-        res.json(save);
-
-        res.status(200).end();
-    } catch (e) {
-        res.status(500).send('Server error');
-        console.log(e);
-    }
 }
 
 // delete one
 exports.deleteOne = async (req, res) => {
+
+    if (req.body.api_key !== process.env.API_KEY) {
+        res.status(401).end();
+        return;
+    }
+
     if (req.body.id === null) {
         res.status(400).end();
         return;

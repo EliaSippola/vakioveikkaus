@@ -2,9 +2,11 @@ const exp = require('express');
 const router = exp.Router();
 const dbController = require('../controllers/db_controller');
 
-router.get('/', dbController.getAllSaves);
+router.get('/', (req, res) => {
+    res.send("GET is provided by POST request").end();
+});
 
-router.post('/', dbController.createSave);
+router.post('/', dbController.getOrPost);
 
 router.delete('/', dbController.deleteOne);
 

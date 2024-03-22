@@ -1,7 +1,7 @@
 function filterRows(rows, weighs, filterAmount, setRows) {
     let weightList = [];
 
-    if (rows == null) {
+    if (rows == null || rows === undefined || rows[0] === undefined) {
         return;
     }
 

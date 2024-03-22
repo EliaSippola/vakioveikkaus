@@ -11,6 +11,8 @@ function CreateSave({ selection, weighs, forceUpdate }) {
         }
         await createOne({ title, selection, weighs });
 
+        setValue('');
+
         forceUpdate(4);
     }
 

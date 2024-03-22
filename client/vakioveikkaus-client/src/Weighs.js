@@ -7,7 +7,8 @@ function Weighs({ weighs, setWeighs, filterAmount, setFilterAmount, forceUpdate 
         const key = elem.currentTarget.getAttribute("data-key");
         const value = elem.currentTarget.getAttribute("data-val");
 
-        usedWeighs[key][value] = parseInt(elem.target.value);
+        weighs[key][value] = parseInt(elem.target.value);
+        setWeighs([...weighs]);
     }
 
     const setAmount = (elem) => {
@@ -15,20 +16,14 @@ function Weighs({ weighs, setWeighs, filterAmount, setFilterAmount, forceUpdate 
     }
 
     function filterRows() {
-        setWeighs(usedWeighs);
+        setWeighs(weighs);
         forceUpdate(2);
-    }
-
-    let usedWeighs;
-
-    if (usedWeighs == null) {
-        usedWeighs = weighs;
     }
 
     return (
         <div className="weighs">
             <h3>Weighs</h3>
-            {usedWeighs.map((val, i) => (
+            {weighs.map((val, i) => (
                 <div key={i}>
                     <InputArea val={val[0]} reFunc={changeVal} keyId={i} valId={0} />
                     <InputArea val={val[1]} reFunc={changeVal} keyId={i} valId={1} />
