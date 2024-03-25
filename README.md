@@ -94,6 +94,14 @@ Sarakkeeseen 5 tulee valinnat, jotka on valittu filtteroitujen rivien avulla. As
 
 ***Huom! Rivimäärän tulee olla jaollinen numerolla 2 ja/tai 3 jotta rivien valinta toimii. Jos asetat rivien määräksi jonkin lukeman joka ei ole kahdella tai kolmella jaollinen, valintojen generointi on mahdotonta. (esim. 128 riviä toimii, mutta 129 riviä ei).***
 
+### Valintojen ja painoarvojen valinta ja tallennus
+
+Sovelluksen alaosassa on kohta valintojen tallennukselle. Kirjoita tallennuksen nimi, ja paina nappia **Save current selection and weighs**. Painike tallentaa tämänhetkiset valinnat ja painoarvot.
+
+Voit valita nämä valinnat ja painoarvot sovelluksen yläosasta painikkeella **Select**.
+
+Voit poistaa tallenetut tiedot painikkeesta **delete**. (Valikosta valittu tallenne).
+
 ## Asennus
 
 Sovellus on jaettu backendiin ([server/backend](/server/backend/)) ja frontendiin ([client/vakioveikkaus-client](/client/vakioveikkaus-client/))
