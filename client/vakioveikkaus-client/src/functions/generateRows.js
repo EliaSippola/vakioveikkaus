@@ -129,7 +129,7 @@ function generateRows( compRow, setRows, setRowAmount ) {
     // loop all possibilities
     for (let i = 1; i < rowAmount; i++) {
 
-        let j = 12;
+        let j = 13;
 
         whileLoop:
         while (j--) {

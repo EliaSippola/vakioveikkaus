@@ -6,7 +6,7 @@ function Generated({ compRow, rowAmount, rows }) {
 
     return (
         <div className="generated">
-            <h3>Generated values</h3>
+            <h3>Generated rows</h3>
             <div className="gen-list">
                 <div>Compact row: {compRow}</div>
                 <div>0 = not set | 1 = 1 | X = x | 2 = 2 | L = 1x | R = x2 | C = 12 | A = 1x2</div>

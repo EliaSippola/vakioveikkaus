@@ -101,7 +101,7 @@ function App() {
 
   return (
     <div className="App">
-      <p>Vakioveikkaus rivien generointi ja filtterointi</p>
+      <h2>Generating and filtering Vakioveikkaus' rows</h2>
       <SelectSave selectionList={selectionList} forceUpdate={forceUpdate} listId={listId} setListId={setListId} />
       <div className='columns'>
         <Selected setCompRow={setCompRow} selection={selection} setSelection={setSelection} forceUpdate={forceUpdate} />

@@ -6,7 +6,7 @@ function Filtered({ rowAmount, rows }) {
 
     return (
         <div className="filtered">
-            <h3>Filtered values</h3>
+            <h3>Rows filtered by weighs</h3>
             <div className="gen-list">
                 <br />
                 <br />

@@ -33,7 +33,7 @@ function Selected({ setCompRow, selection, setSelection, forceUpdate }) {
 
     return (
         <div className='selected'>
-            <h3>selected</h3>
+            <h3>Selected rows</h3>
             {usedValues.map((val, i) => (
                 <div key={i}>
                     <SelectButton val={1} reFunc={select} className={val[0] === 1 ? "selButton-active" : "selButton"} id={0} parentKey={i} />

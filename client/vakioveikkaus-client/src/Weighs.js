@@ -22,7 +22,7 @@ function Weighs({ weighs, setWeighs, filterAmount, setFilterAmount, forceUpdate 
 
     return (
         <div className="weighs">
-            <h3>Weighs</h3>
+            <h3>Selected weighs</h3>
             {weighs.map((val, i) => (
                 <div key={i}>
                     <InputArea val={val[0]} reFunc={changeVal} keyId={i} valId={0} />
@@ -32,7 +32,7 @@ function Weighs({ weighs, setWeighs, filterAmount, setFilterAmount, forceUpdate 
             ))}
             <input type="number" className='setAmount' onChange={setAmount} value={filterAmount} name="lines" ></input>
             <SubmitButton text={"Filter"} reFunc={filterRows} />
-            <div>Rivien määrä Filterin vieressä</div>
+            <div>Number of rows</div>
         </div>
     )
 }

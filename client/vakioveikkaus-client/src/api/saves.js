@@ -1,6 +1,6 @@
 const apikey = process.env.REACT_APP_DB_API_KEY;
 
-const baseUrl = 'http://localhost:3030/api/db';
+const baseUrl = 'http://localhost:3000/api/db';
 
 // create save
 export const createOne = async (save) => {
