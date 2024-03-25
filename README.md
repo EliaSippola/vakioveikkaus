@@ -1,4 +1,4 @@
-# vakioveikkaus sovellus
+# Vakioveikkaus sovellus
 
 Sovellus vakioveikkauksen rivien generointiin valinnasta ja rivien filtteröintiin painoarvojen avulla.
 Sovellukseen kuuluu MongoDB tietokanta, johon voidaan tallentaa valinnat sekä painoarvot.
@@ -11,7 +11,7 @@ Sovellukseen kuuluu MongoDB tietokanta, johon voidaan tallentaa valinnat sekä p
 >
 > Vakioveikkaus on veikkauksen uhkapeli. Pelissä veikkaaja veikkaa erilaisten urheilulajien päivän tuloksista. Peliä pelataan riveillä, joilla yritetään ennustaa kaikkien pelien lopputulokset (voitto, häviö tai tasapeli). Pelissä voidaan myöskin valita useampi valinta voitosta, tasapelistä sekä häviöstä. Jos valitaan useampi vaihtoehto, on pelaajan ostettava kaikki rivit, jotka vastaavat hänen valintaansa. 
 >
-> *jos pelaaja ei ole varma onko ensimmäisen pelin tulos voitto vai häviö, hän ostaa sekä rivin jossa ensimmäinen peli voitetaan, että pelin jossa ensimmäinen peli päättyy häviöön*
+> *jos pelaaja ei ole varma onko ensimmäisen pelin tulos voitto vai häviö, hän ostaa sekä rivin jossa ensimmäinen peli voitetaan, että rivin jossa ensimmäinen peli päättyy häviöön*
 >
 > Sovellus on suunniteltu 13 pelin vakioon. Sovelluksella pystyy generoimaan kaikki mahdolliset rivit, jonka jälkeen käuttjä voi asettaa peleille erilaisia painoarvoja. Painoarvojen asettamisen jälkeen käyttäjä voi filtteroida rivejä asettamien painoarvojen jälkeen, jonka avulla voidaan muodostaa valinta jotka ovat painoarvojen mukaan todennäköisimmät.
 > 
@@ -26,7 +26,7 @@ Sovellukseen kuuluu MongoDB tietokanta, johon voidaan tallentaa valinnat sekä p
 
 Valitse rivit jotka haluat generoida kohdasta **Selected rows**. Valinnan jälkeen paina kohtaa **Generate**, jolloin sarakkeeseen **Generated rows** generoituu kaikki mahdolliset rivit jotka on valittu.
 
-*Huomaa, että sovellus ei kykene gemerpo,aam kaikkia 1,5 miljoonaa riviä kerralla. Pyri generoimaan alle 200 000 riviä kerralla*
+*Huomaa, että sovellus ei kykene generoimaan kaikkia 1,5 miljoonaa riviä kerralla. Pyri generoimaan alle 200 000 riviä kerralla*
 
 ### Sarake 2, generoidut rivit
 
