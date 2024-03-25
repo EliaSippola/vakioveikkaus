@@ -88,7 +88,7 @@ Kun painoarvot on asetettu, valitse filtteröitävien rivien määrä. Tämä as
 
 Sarakkeessa 4 näkyy rivit, jotka on filtteröity. Tämä tarkoittaa siis että riveille on annettu oma painoarvo sarakkeen 3 painoarvojen mukaan, jonka jälkeen rivit on järjestetty niille annetun painoarvon mukaan.
 
-### Sarake 5, Valittu valinta
+### Sarake 5, Generoitu valinta
 
 Sarakkeeseen 5 tulee valinnat, jotka on valittu filtteroitujen rivien avulla. Aseta rivien määrä painikkeen viereen, ja paina painiketta **Select** generoidaksesi valinnat.
 
