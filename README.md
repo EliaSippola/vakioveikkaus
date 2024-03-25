@@ -130,7 +130,7 @@ Tiedoston asetukset:
 # api key will need to match backend api key
 REACT_APP_DB_API_KEY = 1234567890
 
-# url to match to backend. Backend api is open on /api/db.
+# url to match to backend api. Backend api is open on /api/db.
 # http://localhost:3000/api/db is default
 REACT_APP_BASEURL = http://localhost:3000/api/db
 ```
