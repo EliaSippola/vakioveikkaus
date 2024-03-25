@@ -12,22 +12,25 @@ function filterSelection( filteredRows, setFilteredSelection, rowAmount ) {
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ];
 
+    let weightControl = filteredRows.length;
+
     for (let i = 0; i < filteredRows.length; i++) {
         for (let j = 0; j < filteredRows[i].length; j++) {
             switch(filteredRows[i][j]) {
                 case "1":
-                    amounts[0][j] += 1;
+                    amounts[0][j] += 1 + weightControl;
                     break;
                 case "X":
-                    amounts[1][j] += 1;
+                    amounts[1][j] += 1 + weightControl;
                     break;
                 case "2":
-                    amounts[2][j] += 1;
+                    amounts[2][j] += 1 + weightControl;
                     break;
                 default:
                     break;
             }
         }
+        weightControl--;
     }
 
     let selection = [
